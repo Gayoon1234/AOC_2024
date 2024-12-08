@@ -1,14 +1,6 @@
-require 'set'
+require_relative '../../lib/common'
 
-INPUT = "1\\input\\input.txt"
-l1, l2 = [], []
-
-# Parse input into two arrays
-File.foreach(INPUT) do | line |
-    v1, v2 = line.split
-    l1 << v1.to_i
-    l2 << v2.to_i
-end
+l1, l2 = parse_input_two_columns(get_input_path(1))
 
 l1.sort!
 l2.sort!
