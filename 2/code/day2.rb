@@ -13,24 +13,16 @@ def is_safe(report)
     last_level = report[0]
 
     # Compare differences and return false if violation
-    report[1..].each do |level|
-        return false if (last_level-level).abs > 3 or last_level == level
-        last_level = level
+    report.each_cons(2) do |last_level, level|
+        return false if (last_level - level).abs > 3 || last_level == level
     end
-
-    # default
-    return true
+    # default return true
 end
 
 
 def is_safe_ish(report)
     # Generate combinations of length minus one, this 
     # simulates removing a different level each time
-    # report.combination(report.length - 1).to_a.each do |line|
-    #     return true if is_safe(line)
-    # end
-    # return false
-
     report.combination(report.length - 1).any? { |line| is_safe(line) }
 end
 
