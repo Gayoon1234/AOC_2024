@@ -13,6 +13,17 @@ def parse_input_two_columns(input_file)
     return l1, l2
 end
 
+def parse_input_as_numeric(input_file)
+    data = []
+
+    File.foreach(input_file) do |line|
+        next if line.strip.empty?
+        data <<  line.split.map(&:to_i) 
+    end
+    
+    return data
+end
+
 def get_input_path(day)
     return day.to_s << INPUT
 end
