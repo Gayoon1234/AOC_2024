@@ -20,8 +20,12 @@ def parse_input_as_numeric(input_file)
         next if line.strip.empty?
         data <<  line.split.map(&:to_i) 
     end
-    
+
     return data
+end
+
+def parse_input_as_single_string(input_file)
+    return File.read(input_file)
 end
 
 def get_input_path(day)
