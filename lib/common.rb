@@ -28,6 +28,10 @@ def parse_input_as_single_string(input_file)
     return File.read(input_file)
 end
 
+def parse_input_as_array(input_file)
+    return File.readlines(input_file, chomp: true)
+end
+
 def get_input_path(day)
     return day.to_s << INPUT
 end
