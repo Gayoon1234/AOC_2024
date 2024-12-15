@@ -44,3 +44,22 @@ decrement = (
 ng_total =  count_xmas_smax(decrement)
 
 pp v_total + h_total + pg_total + ng_total
+
+### PART 2 ###
+
+# Pretty silly solution, basically I covert the input to a string
+# and regex scan for the full pattern taking into account the number of chars
+# between the middle A and the M.S
+
+LINE = input[0].length-1
+
+# N for new line - otherwise there are false positives where X's can be created
+# by wrapping around the input
+input_str = input.join("N") 
+
+msms = input_str.scan(/(?=M[^N]S.{#{LINE}}A.{#{LINE}}M[^N]S)/).length
+mmss = input_str.scan(/(?=M[^N]M.{#{LINE}}A.{#{LINE}}S[^N]S)/).length
+ssmm = input_str.scan(/(?=S[^N]S.{#{LINE}}A.{#{LINE}}M[^N]M)/).length
+smsm = input_str.scan(/(?=S[^N]M.{#{LINE}}A.{#{LINE}}S[^N]M)/).length
+
+pp msms+mmss+ssmm+smsm
