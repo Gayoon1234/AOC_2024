@@ -56,10 +56,11 @@ LINE = input[0].length-1
 # N for new line - otherwise there are false positives where X's can be created
 # by wrapping around the input
 input_str = input.join("N") 
+outcomes = ["MSMS", "MMSS", "SSMM", "SMSM"]
 
-msms = input_str.scan(/(?=M[^N]S.{#{LINE}}A.{#{LINE}}M[^N]S)/).length
-mmss = input_str.scan(/(?=M[^N]M.{#{LINE}}A.{#{LINE}}S[^N]S)/).length
-ssmm = input_str.scan(/(?=S[^N]S.{#{LINE}}A.{#{LINE}}M[^N]M)/).length
-smsm = input_str.scan(/(?=S[^N]M.{#{LINE}}A.{#{LINE}}S[^N]M)/).length
 
-pp msms+mmss+ssmm+smsm
+total =  outcomes.sum do |c|
+    input_str.scan(/(?=#{c[0]}[^N]#{c[1]}.{#{LINE}}A.{#{LINE}}#{c[2]}[^N]#{c[3]})/).length
+end
+
+pp total

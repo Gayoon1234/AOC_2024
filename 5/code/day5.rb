@@ -15,8 +15,6 @@ def validate_update?(update)
         valid = !update[(i+1)..].any? { |element| $rules[page].include?(element) }
         return false unless valid
     end
-
-    return true
 end
 
 total = 0

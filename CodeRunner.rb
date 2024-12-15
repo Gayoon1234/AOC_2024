@@ -10,7 +10,7 @@ root_dir = File.dirname(__FILE__)
     outputs = output.split("\n")  
 
     puts "Part 1: " << outputs[0]
-    puts "Part 2: " << outputs[1] if outputs.length == 2
+    puts outputs.length == 2 ? "Part 2: " << outputs[1] : "No part 2"
     
   else
     puts "Skipped #{day}"
